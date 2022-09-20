@@ -1,0 +1,34 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Get started</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+<body>
+<header th:insert="blocks/header"/>
+
+<div th:each="pro:${publisher}">
+
+    <form
+            method="post"
+            th:object="${publisher}">
+
+        <input th:value="${pro.getPublisherName()}"
+               th:field="*{publisherName}"
+               type="text"
+               name="devName"
+               placeholder="Название"/>
+
+
+        <div style="color: red"
+             th:if="*{#fields.hasErrors('publisherName')}"
+             th:errors="*{publisherName}">
+        </div>
+
+
+        <button class="btn btn-warning" type="submit">Подтвердить</button>
+    </form>
+</div>
+
+</body>
+</html>

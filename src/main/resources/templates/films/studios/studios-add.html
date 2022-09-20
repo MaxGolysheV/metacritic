@@ -1,0 +1,30 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Get started</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+<body>
+<header th:insert="blocks/header"/>
+
+<form method="post" th:object="${filmStudios}">
+
+    <input
+            th:field="*{filmStudioName}"
+            type="text"
+            name="title"
+            placeholder="Название"
+    />
+    <div style="color: red"
+         th:if="${#fields.hasErrors('filmStudioName')}"
+         th:errors="*{filmStudioName}">
+    </div>
+
+    <button class="btn btn-warning" type="submit">Добавить</button>
+
+</form>
+
+
+
+</body>
+</html>

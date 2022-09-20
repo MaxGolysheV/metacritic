@@ -1,0 +1,30 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Get started</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+</head>
+<body>
+<header th:insert="blocks/header"/>
+<h3>Фильмы</h3>
+<a href="/films/search">Поиск</a>
+<a href="/films/add">Добавить</a>
+<table>
+    <th>Название фильма</th>
+    <th>Возрастные ограничения</th>
+    <tr th:each="gg:${films}">
+        <td th:text="${gg.filmName}"></td>
+        <td th:text="${gg.age.value}"></td>
+
+        <td>
+            <form th:action="'/films/'+${gg.id}">
+                <button class="btn btn-warning" th:href="'/films/'+${gg.id}">Подробнее</button>
+            </form>
+        </td>
+    </tr>
+
+
+
+</table>
+</body>
+</html>

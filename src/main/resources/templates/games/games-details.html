@@ -1,0 +1,32 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Get started</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+<body>
+<header th:insert="blocks/header"/>
+<h3>Подробнее</h3>
+
+<div th:each="pro:${games}">
+
+
+
+    <p th:text="${pro.gameName}"></p>
+    <p th:text="${pro.info}"></p>
+    <p th:text="${pro.price}"></p>
+    <p th:text="${pro.gameGenre.genreName}"></p>
+    <p th:text="${pro.age.value}"></p>
+    <p th:text="${pro.publisher.publisherName}"></p>
+    <p th:text="${pro.developerCompany.devName}"></p>
+
+
+    <a th:href="'/games/'+${pro.id}+'/edit'">Править</a>
+    <form th:action="'/games/'+${pro.id}+'/delete'" method="post">
+        <button type="submit" class="btn btn-del">Удалить</button>
+    </form>
+</div>
+
+
+</body>
+</html>

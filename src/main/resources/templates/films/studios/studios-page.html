@@ -1,0 +1,28 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Get started</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+<body>
+<header th:insert="blocks/header"/>
+<h3>Студии фильмов</h3>
+
+<a href="/films/studios/search">Поиск</a>
+<a href="/films/studios/add">Добавить</a>
+
+<table>
+    <th>Название</th>
+    <tr th:each="gg:${filmStudios}">
+        <td th:text="${gg.filmStudioName}"></td>
+        <td>
+            <form th:action="'/films/studios/'+${gg.id}">
+                <button class="btn btn-warning" th:href="'/films/studios/'+${gg.id}">Подробнее</button>
+            </form>
+        </td>
+    </tr>
+</table>
+
+
+</body>
+</html>

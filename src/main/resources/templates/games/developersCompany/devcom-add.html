@@ -1,0 +1,27 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Get started</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+<body>
+<header th:insert="blocks/header"/>
+
+<form th:action="${'/games/developers/add'}" method="post" th:object="${developerCompany}">
+
+
+    <input th:field="*{devName}"
+           type="text"
+           name="devName"
+           placeholder="Название студии"><br>
+
+    <div style="color: red"
+         th:if="*{#fields.hasErrors('devName')}"
+         th:errors="*{devName}"></div>
+
+
+    <button class="btn btn-warning" type="submit">Добавить</button>
+
+</form>
+</body>
+</html>

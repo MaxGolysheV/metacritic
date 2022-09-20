@@ -1,0 +1,25 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Get started</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+<body>
+<header th:insert="blocks/header"/>
+<h3>Подробнее</h3>
+<div th:each="pro:${films}">
+    <p th:text="${pro.filmName}"></p>
+    <p th:text="${pro.filmStudio.filmStudioName}"></p>
+    <p th:text="${pro.filmGenre.genreName}"></p>
+    <p th:text="${pro.age.value}"></p>
+
+
+    <a th:href="'/films/'+${pro.id}+'/edit'">Править</a>
+    <form th:action="'/films/'+${pro.id}+'/delete'" method="post">
+        <button type="submit" class="btn btn-del">Удалить</button>
+    </form>
+</div>
+
+
+</body>
+</html>

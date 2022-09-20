@@ -1,0 +1,21 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Get started</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+<body>
+<header th:insert="blocks/header"/>
+
+<div th:each="pro:${developerCompany}">
+   <h3>Подробнее</h3>
+    <p>Название</p>
+    <p th:text="${pro.devName}"></p>
+
+    <a th:href="'/games/developers/'+${pro.id}+'/edit'">Править</a>
+    <form th:action="'/games/developers/'+${pro.id}+'/delete'" method="post">
+        <button type="submit" class="btn btn-del">Удалить</button>
+    </form>
+</div>
+</body>
+</html>

@@ -1,0 +1,100 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Get started</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+<body>
+<header th:insert="blocks/header"/>
+
+
+<div th:each="fil:${games}">
+    <form method="post" th:object="${games}">
+        <input
+                th:field="*{gameName}"
+                type="text"
+                name="gameName"
+                placeholder="Название"
+        />
+        <div style="color: red"
+             th:if="${#fields.hasErrors('gameName')}"
+             th:errors="*{gameName}">
+        </div>
+        <br>
+
+        <textarea
+                th:field="*{info}"
+                type="text"
+                name="info"
+                placeholder="Информация"
+        />
+        <div style="color: red"
+             th:if="${#fields.hasErrors('info')}"
+             th:errors="*{info}">
+        </div>
+
+        <br>
+
+        <input
+                th:field="*{price}"
+                type="number"
+                name="price"
+                placeholder="Цена"
+        />
+        <div style="color: red"
+             th:if="${#fields.hasErrors('price')}"
+             th:errors="*{price}">
+        </div>
+        <br>
+
+        <select name="gameGenre" th:field="*{gameGenre}">
+            <div  th:each="gen : ${gameGenre}">
+                <option th:label="${gen.genreName}" th:value="${gen.id}"></option>
+            </div>
+        </select>
+        <div style="color: red"
+             th:if="${#fields.hasErrors('gameGenre')}"
+             th:errors="*{gameGenre}">
+        </div>
+        <br>
+
+        <select name="developerCompany" th:field="*{developerCompany}">
+            <div  th:each="std : ${developerCompany}">
+                <option  th:label="${std.devName}" th:value="${std.id}"></option>
+            </div>
+        </select>
+        <div style="color: red"
+             th:if="${#fields.hasErrors('developerCompany')}"
+             th:errors="*{developerCompany}">
+        </div><br>
+
+        <select name="publisher" th:field="*{publisher}">
+            <div   th:each="pub : ${publisher}">
+                <option th:label="${pub.publisherName}" th:value="${pub.id}"></option>
+            </div>
+        </select><br>
+        <div style="color: red"
+             th:if="${#fields.hasErrors('publisher')}"
+             th:errors="*{publisher}">
+        </div><br>
+
+        <select name="age" th:field="*{age}">
+            <div   th:each="ag : ${age}">
+                <option th:label="${ag.value}" th:value="${ag.id}"></option>
+            </div>
+        </select><br>
+        <div style="color: red"
+             th:if="${#fields.hasErrors('age')}"
+             th:errors="*{age}">
+        </div><br>
+
+
+        <button class="btn btn-warning" type="submit">Добавить</button>
+
+
+
+    </form>
+</div>
+
+</body>
+</html>

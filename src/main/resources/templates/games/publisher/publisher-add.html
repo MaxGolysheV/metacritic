@@ -1,0 +1,28 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Get started</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+<body>
+<header th:insert="blocks/header"/>
+
+
+<form method="post" th:object="${publisher}">
+
+    <input
+            th:field="*{publisherName}"
+            type="text"
+            name="title"
+            placeholder="Название"
+    />
+    <div style="color: red"
+         th:if="${#fields.hasErrors('publisherName')}"
+         th:errors="*{publisherName}">
+    </div>
+
+    <button class="btn btn-warning" type="submit">Добавить</button>
+
+</form>
+</body>
+</html>

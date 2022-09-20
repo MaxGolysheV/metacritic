@@ -1,0 +1,64 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Get started</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+<body>
+<header th:insert="blocks/header"/>
+
+<div th:each="fil:${films}">
+    <form method="post" th:object="${films}">
+
+        <input
+                th:field="*{filmName}"
+                type="text"
+                name="filmName"
+                placeholder="Название"
+        />
+        <div style="color: red"
+             th:if="${#fields.hasErrors('filmName')}"
+             th:errors="*{filmName}">
+        </div>
+
+
+        <select name="filmGenre" th:field="*{filmGenre}">
+            <div  th:each="gen : ${filmGenre}">
+                <option th:label="${gen.genreName}" th:value="${gen.id}"></option>
+            </div>
+        </select>
+        <div style="color: red"
+             th:if="${#fields.hasErrors('filmGenre')}"
+             th:errors="*{filmGenre}">
+        </div>
+
+
+        <select name="filmStudios" th:field="*{filmStudio}">
+            <div  th:each="std : ${filmStudio}">
+                <option  th:label="${std.filmStudioName}" th:value="${std.id}"></option>
+            </div>
+        </select>
+        <div style="color: red"
+             th:if="${#fields.hasErrors('filmStudio')}"
+             th:errors="*{filmStudio}">
+        </div>
+
+
+        <select name="age" th:field="*{age}">
+            <div   th:each="ag : ${age}">
+                <option th:label="${ag.value}" th:value="${ag.id}"></option>
+            </div>
+        </select>
+        <div style="color: red"
+             th:if="${#fields.hasErrors('age')}"
+             th:errors="*{age}">
+        </div>
+
+
+        <button class="btn btn-warning" type="submit">Добавить</button>
+
+
+</form>
+</div>
+</body>
+</html>

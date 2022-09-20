@@ -1,0 +1,27 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Get started</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+<body>
+<header th:insert="blocks/header"/>
+<a href="/games/publisher/search">Поиск</a>
+<a href="/games/publisher/add">Добавить</a>
+
+<table>
+    <th>Название</th>
+    <tr th:each="pub:${publisher}">
+        <td th:text="${pub.publisherName}"></td>
+        <td>
+            <form th:action="'/games/publisher/'+${pub.id}">
+                <button class="btn btn-warning" th:href="'/games/publisher/'+${pub.id}">Подробнее</button>
+            </form>
+        </td>
+    </tr>
+</table>
+
+
+
+</body>
+</html>

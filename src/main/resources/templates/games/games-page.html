@@ -7,28 +7,23 @@
 </head>
 <body>
 <header th:insert="blocks/header"/>
-<h3>Игры</h3>
-<a href="/games/search">Поиск</a>
-<a href="/games/add">Добавить</a>
-<table>
-  <th>Название игры</th>
-  <th>Возрастные ограничения</th>
-  <tr th:each="gg:${games}">
-    <td th:text="${gg.gameName}"></td>
-    <td th:text="${gg.age.value}"></td>
 
-    <td>
-      <form th:action="'/games/'+${gg.id}">
-        <button class="btn btn-warning" th:href="'/games/'+${gg.id}">Подробнее</button>
-      </form>
-    </td>
-  </tr>
+    <h3>Игры</h3>
+    <a href="/games/search">Поиск</a>
+    <a href="/games/add">Добавить</a>
+    <table>
+      <th >Название игры</th>
+      <th>Возрастные ограничения</th>
+      <tr th:each="gg:${games}">
+        <td th:text="${gg.gameName}"></td>
+        <td th:text="${gg.age.value}"></td>
 
-
-
-</table>
-
-
-
+        <td>
+          <form th:action="'/games/'+${gg.id}">
+            <button class="btn btn-warning" th:href="'/games/'+${gg.id}">Подробнее</button>
+          </form>
+        </td>
+      </tr>
+    </table>
 </body>
 </html>

@@ -6,6 +6,7 @@ import com.example.metacritic.Models.Age;
 import javax.persistence.*;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 
 @Entity
 public class Films {
@@ -18,6 +19,7 @@ public class Films {
     @Column(unique = true)
     @NotNull
     @NotEmpty(message = "Поле НАЗВАНИЕ ФИЛЬМА не может быть пустым")
+    @Size(min=3,max=25,message = "Значение поле должно быть в диапазоне от 3 до 25 символов")
     private String filmName;
 
     /*Связь многие к одному с таблицей студий фильма*/

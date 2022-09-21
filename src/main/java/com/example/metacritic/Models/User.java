@@ -6,6 +6,7 @@ import org.springframework.security.core.userdetails.UserDetails;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.Size;
 import java.util.Collection;
 import java.util.Set;
 
@@ -17,9 +18,10 @@ public class User implements UserDetails {
     private Long Id;
 
 
-
+    @Size(min=3,max=25)
     private String username;
 
+    @Size(min=3,max=25)
     private String password;
     private boolean active;
 

@@ -192,6 +192,7 @@ public class GamesController {
         Games games2 = gamesRepository.findById(i);
 
         games2.setGameName(games.getGameName());
+        games2.setInfo(games.getInfo());
         games2.setPrice(games.getPrice());
         games2.setGameGenre(gameGenre);
         games2.setPublisher(publisher);

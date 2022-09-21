@@ -3,6 +3,7 @@ package com.example.metacritic.Models.Films;
 import javax.persistence.*;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 import java.util.Collection;
 
 @Entity
@@ -14,6 +15,7 @@ public class FilmStudios {
 
     @NotNull
     @NotEmpty(message = "Поле НАЗВАНИЕ СТУДИИ не может быть пустым")
+    @Size(min=3,max=25,message = "Значение поле должно быть в диапазоне от 3 до 25 символов")
     private String filmStudioName;
 
     /*Связь один ко многим с таблицей фильмов*/

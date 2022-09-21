@@ -6,6 +6,7 @@ import org.springframework.lang.NonNull;
 import javax.persistence.*;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 
 @Entity
 public class Games {
@@ -17,6 +18,7 @@ public class Games {
     @NotNull
     @Column(unique = true)
     @NotEmpty(message = "Поле НАЗВАНИЕ ИГРЫ не может быть пустым")
+    @Size(min=3,max=25,message = "Значение поле должно быть в диапазоне от 3 до 25 символов")
     private String gameName;
 
     @NotNull(message = "Поле ЦЕНА ИГРЫ не может быть пустым")
@@ -24,6 +26,7 @@ public class Games {
 
     @NotNull
     @NotEmpty(message = "Поле ИНФОРМАЦИЯ ОБ ИГРЕ не может быть пустым")
+    @Size(min=3,max=100,message = "Значение поле должно быть в диапазоне от 3 до 100 символов")
     private String info;
 
 

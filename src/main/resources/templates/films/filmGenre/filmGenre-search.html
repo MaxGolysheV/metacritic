@@ -18,7 +18,7 @@
     <div th:each="re:${result}">
 
         <h3 th:text="${re.genreName}"></h3>
-        <a class="btn btn-outline-light me-2" th:href="'/films/genre/'+${re.id}">Подробнее</a>
+        <a  th:href="'/films/genre/'+${re.id}">Подробнее</a>
 
     </div>
 
